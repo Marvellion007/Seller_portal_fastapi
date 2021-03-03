@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  testing:
+    build: 
+      context: ../../
+      dockerfile: ./build/Docker_Test/Dockerfile
+      args:
+        ports: ${port}

@@ -1,0 +1,30 @@
+version: '3.7'
+volumes:
+   postgres_data:
+services:
+  postgres:
+    build: 
+      context: ../
+      dockerfile: ./build/Docker_Postgres/Dockerfile
+    restart: always
+    container_name: psql  
+    environment:
+        POSTGRES_HOST_AUTH_METHOD: trust
+    env_file: ../config/.env
+    ports:
+      - "5432"
+  fastapi:
+    build: 
+      context: ../
+      dockerfile: ./build/Docker_Fastapi/Dockerfile
+      args:
+        ports: ${port}
+    restart: always
+    container_name: sql_api
+    environment:
+      - DB_SERVER=psql
+    ports:  
+      - "${port}:${port}"
+    depends_on:
+      - 'postgres'
+    command: bash -c 'while !</dev/tcp/postgres/5432; do sleep 1; done; uvicorn core.main:app --host 0.0.0.0 --port $port --reload'
