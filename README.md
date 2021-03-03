@@ -58,7 +58,7 @@ There are three Datamodels used:
 - Buyer_business_VAT_ID
 - Buyer_business_name
 - Buyer_country
--> This pydantic datamodel stores data in table "Buyer credit" as :
+# This pydantic datamodel stores data in table "Buyer credit" as :
 - Buyer_business_VAT_ID = Column(String, primary_key=True)
 - Buyer_business_name = Column(String)
 - Buyer_country = Column(String)
@@ -73,7 +73,7 @@ There are three Datamodels used:
 - Buyer_shipping_zip_code
 - Buyer_email_address
 - Buyer_phone_number
--> This pydantic datamodel stores data in table "Buyer" as :
+# This pydantic datamodel stores data in table "Buyer" as :
 - Buyer_business_VAT_ID= Column(String, primary_key=True)
 - Buyer_business_name = Column(String)
 - Buyer_country = Column(String)
@@ -90,8 +90,7 @@ There are three Datamodels used:
 - Number_of_pieces
 - Status
 - Send_mail
-
--> This pydantic datamodel stores data in table "Invoice" as:
+# This pydantic datamodel stores data in table "Invoice" as:
 - Buyer_business_VAT_ID= Column(String,primary_key=True,index=False)
 - Product_name= Column(String)
 - Product_price= Column(Integer)
